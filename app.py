@@ -5,6 +5,7 @@ from ultralytics import YOLO
 import os
 import cv2
 import uuid
+from flask_cors import CORS  
 import shutil
 
 
@@ -16,6 +17,7 @@ model = YOLO("best.pt")
 # model.to('cuda')
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for the Flask app
 api = Api(app)
 
 parser = reqparse.RequestParser()
@@ -88,7 +90,8 @@ def upload_images():
                 except:
                     pass
 
-        response_json.append({'marathon_name': marathon_name, 'image_path': new_filepath, 'detected_numbers': bib_numbers})
+        response_json.append({'marathon_name': marathon_name, 'image_path': filename, 'detected_numbers': bib_numbers})
+        print(response_json)
 
     return jsonify({'message': 'Images uploaded and processed successfully'})
 
@@ -105,4 +108,4 @@ def search_bib_number():
     return jsonify({'desired_bib_number': desired_bib_number, 'marathon_name': marathon_name, 'image_paths': results})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5006)
