@@ -12,7 +12,7 @@ import shutil
 
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
-# Initialize the OCR and YOLO models
+# Initialize the OCR and YOLO model
 ocr = PaddleOCR(use_angle_cls=True, lang='en')
 model = YOLO("best.pt")
 # model.to('cuda')
