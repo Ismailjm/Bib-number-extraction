@@ -92,7 +92,7 @@ def upload_images():
                     pass
 
         response_json.append({'marathon_name': marathon_name, 'image_path': filename, 'detected_numbers': bib_numbers})
-        print(response_json)
+        #print(response_json)
 
     return jsonify({'message': 'Images uploaded and processed successfully'})
 
