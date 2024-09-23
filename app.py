@@ -42,6 +42,7 @@ def extract_text(result):
     first_elements = [text[1] for sublist in result for text in sublist]
     return first_elements
 
+# remove non alphanumeric characters
 def remove_non_alphanumeric(text):
     return ''.join(char for char in text if char.isalnum())
 
