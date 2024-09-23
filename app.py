@@ -37,6 +37,7 @@ def detect_bib_number(image):
     results = model.predict(image, imgsz=2016)
     return results
 
+# extract text 
 def extract_text(result):
     first_elements = [text[1] for sublist in result for text in sublist]
     return first_elements
